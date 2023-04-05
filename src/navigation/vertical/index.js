@@ -19,7 +19,7 @@ function processMenu() {
       title: 'blockchains',
       children: blockchains,
       tag: `${blockchains.length}`,
-      icon: 'https://ping.pub/logo.svg',
+      icon: 'https://www.linkpicture.com/q/BARYON-3화이트-배경.jpg',
     })
   }
   chainMenus.push({ header: 'sponsors' })
@@ -43,13 +43,13 @@ function processMenu() {
   } else {
     chainMenus.push({
       title: 'Testnet Explorer',
-      href: 'http://testnet.ping.pub',
+      href: 'http://testnet.ping.pub', // http://testnet.baryon.guru
       icon: 'LifeBuoyIcon',
     })
   }
   chainMenus.push({
     title: 'Twitter',
-    href: 'https://twitter.com/ping_pub',
+    href: 'https://twitter.com/baryon_capital',
     icon: 'TwitterIcon',
   })
   chainMenus.push({
@@ -59,7 +59,7 @@ function processMenu() {
   })
   chainMenus.push({
     title: 'Github',
-    href: 'https://github.com/ping-pub/explorer',
+    href: 'https://github.com/baryon-capital',
     icon: 'GithubIcon',
   })
 

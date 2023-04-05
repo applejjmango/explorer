@@ -5,7 +5,7 @@
       :show="syncing"
     >
       <div class="alert-body">
-        <span>{{$t('parameters.no_blocks_produced')}}<strong>{{ latestTime }}</strong> </span>
+        <span>{{ $t('parameters.no_blocks_produced') }}<strong>{{ latestTime }}</strong> </span>
       </div>
     </b-alert>
     <b-row>
@@ -39,12 +39,14 @@
       </b-col>
     </b-row>
     <b-card>
-      <b-card-title class="card-title"><h4>{{$t('parameters.app_ver')}}</h4></b-card-title>
+      <b-card-title class="card-title">
+        <h4>{{ $t('parameters.app_ver') }}</h4>
+      </b-card-title>
       <b-card><object-field-component :tablefield="appVersion" /></b-card>
     </b-card>
     <b-card>
       <b-card-title class="card-title">
-        <h4>{{$t('parameters.node_info')}}</h4>
+        <h4>{{ $t('parameters.node_info') }}</h4>
       </b-card-title>
       <b-card><object-field-component :tablefield="nodeVersion" /></b-card>
     </b-card>

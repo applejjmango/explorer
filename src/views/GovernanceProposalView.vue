@@ -12,7 +12,7 @@
             variant="light-info"
             class="text-right"
           >
-            {{$t('governanceProposal.proposal_status_deposit')}}
+            {{ $t('governanceProposal.proposal_status_deposit') }}
           </b-badge>
           <b-badge
             v-if="proposal.status == 2"
@@ -20,7 +20,7 @@
             variant="light-primary"
             class="text-right"
           >
-            {{$t('governanceProposal.proposal_status_voting')}}
+            {{ $t('governanceProposal.proposal_status_voting') }}
           </b-badge>
           <b-badge
             v-if="proposal.status == 3"
@@ -28,7 +28,7 @@
             variant="light-success"
             class="text-right"
           >
-            {{$t('governanceProposal.proposal_status_passed')}}
+            {{ $t('governanceProposal.proposal_status_passed') }}
           </b-badge>
           <b-badge
             v-if="proposal.status == 4"
@@ -36,7 +36,7 @@
             variant="light-danger"
             class="text-right"
           >
-            {{$t('governanceProposal.proposal_status_rejected')}}
+            {{ $t('governanceProposal.proposal_status_rejected') }}
           </b-badge>
           {{ proposal.title }}
         </b-card-title>

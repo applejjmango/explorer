@@ -9,7 +9,8 @@
         DISCLAIMER:
       </h4>
       <div class="alert-body">
-        <span>Ping.pub is maintained by the community, Everyone could add a chain to ping.pub. Some of those blockchains are not fully tested, Use at your own risk.</span>
+        <span>Use at your own risk. Baryon is not responsible for any misleading
+          result.</span>
       </div>
     </b-alert>
     <form-wizard
@@ -47,7 +48,6 @@
                     v-model="device"
                     stacked
                   >
-
                     <b-form-radio
                       v-model="device"
                       name="device"
@@ -150,7 +150,7 @@
                   <b-form-input
                     id="account_name"
                     v-model="name"
-                    :state="errors.length > 0 ? false:null"
+                    :state="errors.length > 0 ? false : null"
                     placeholder="Ping Nano X"
                     :readonly="edit"
                   />
@@ -190,16 +190,14 @@
                     id="ir"
                     :value="formatPubkey(accounts.pubkey)"
                     readonly
-                    :state="errors.length > 0 ? false:null"
+                    :state="errors.length > 0 ? false : null"
                   />
                   <small class="text-danger">{{ errors[0] }}</small>
                 </validation-provider>
               </b-form-group>
             </b-col>
             <b-col md="12">
-              <b-form-group
-                label="Derivate Address For Chains:"
-              >
+              <b-form-group label="Derivate Address For Chains:">
                 <validation-provider
                   #default="{ errors }"
                   name="addrs"
@@ -208,7 +206,7 @@
                   <div class="demo-inline-spacing text-uppercase">
                     <b-row>
                       <b-col
-                        v-for="item, key in chains"
+                        v-for="(item, key) in chains"
                         :key="key"
                         xs="12"
                         md="4"
@@ -229,8 +227,13 @@
                           <span
                             v-b-tooltip.hover.v-primary
                             :title="`Coin Type: ${item.coin_type}`"
-                            :class="hdpath.startsWith(`m/44'/${item.coin_type}`)?'text-success':'text-danger'"
-                          > {{ item.chain_name }}</span>
+                            :class="
+                              hdpath.startsWith(`m/44'/${item.coin_type}`)
+                                ? 'text-success'
+                                : 'text-danger'
+                            "
+                          >
+                            {{ item.chain_name }}</span>
                         </b-form-checkbox>
                       </b-col>
                     </b-row>
@@ -247,7 +250,10 @@
                 </div>
                 <div class="alert-body">
                   <div>
-                    If you don't have Ledger, Do not import those addresses in <b class="text-danger">RED</b>. Because these addresses are derived from different coin_type which is not as same as the official one
+                    If you don't have Ledger, Do not import those addresses in
+                    <b class="text-danger">RED</b>. Because these addresses are
+                    derived from different coin_type which is not as same as the
+                    official one
                   </div>
                 </div>
               </b-alert>
@@ -256,9 +262,7 @@
         </validation-observer>
       </tab-content>
 
-      <tab-content
-        title="Confirmation"
-      >
+      <tab-content title="Confirmation">
         <div class="d-flex border-bottom mb-2">
           <feather-icon
             icon="UserIcon"
@@ -348,7 +352,10 @@ import {
 } from 'bootstrap-vue'
 import { required } from '@validations'
 import {
-  addressDecode, addressEnCode, getLedgerAddress, getLocalAccounts,
+  addressDecode,
+  addressEnCode,
+  getLedgerAddress,
+  getLocalAccounts,
 } from '@/libs/utils'
 import { toHex } from '@cosmjs/encoding'
 import { stringToPath } from '@cosmjs/crypto'
@@ -408,16 +415,21 @@ export default {
     addresses() {
       if (this.accounts && this.accounts.address) {
         const { data } = addressDecode(this.accounts.address)
-        return this.selected.map(x => {
-          if (this.chains[x]) {
-            const { logo, addr_prefix, coin_type } = this.chains[x]
-            const addr = addressEnCode(addr_prefix, data, coin_type)
-            return {
-              chain: x, addr, logo, hdpath: this.hdpath,
+        return this.selected
+          .map(x => {
+            if (this.chains[x]) {
+              const { logo, addr_prefix, coin_type } = this.chains[x]
+              const addr = addressEnCode(addr_prefix, data, coin_type)
+              return {
+                chain: x,
+                addr,
+                logo,
+                hdpath: this.hdpath,
+              }
             }
-          }
-          return null
-        }).filter(x => x != null)
+            return null
+          })
+          .filter(x => x != null)
       }
       return []
     },
@@ -429,7 +441,11 @@ export default {
       this.chainId = res.block.header.chain_id
       this.keplr = this.initParamsForKeplr(this.chainId, selected)
     })
-    if (selected && selected.chain_name && !this.exludes.includes(selected.chain_name)) {
+    if (
+      selected
+      && selected.chain_name
+      && !this.exludes.includes(selected.chain_name)
+    ) {
       this.selected.push(selected.chain_name)
     }
     const name = new URLSearchParams(window.location.search).get('name')
@@ -458,9 +474,11 @@ export default {
   methods: {
     suggest() {
       if (window.keplr) {
-        window.keplr.experimentalSuggestChain(JSON.parse(this.keplr)).catch(e => {
-          this.error = e
-        })
+        window.keplr
+          .experimentalSuggestChain(JSON.parse(this.keplr))
+          .catch(e => {
+            this.error = e
+          })
       }
     },
     initParamsForKeplr(chainid, chain) {
@@ -469,52 +487,56 @@ export default {
         average: 0.025,
         high: 0.03,
       }
-      return JSON.stringify({
-        chainId: chainid,
-        chainName: chain.chain_name,
-        rpc: Array.isArray(chain.rpc) ? chain.rpc[0] : chain.rpc,
-        rest: Array.isArray(chain.api) ? chain.api[0] : chain.api,
-        bip44: {
+      return JSON.stringify(
+        {
+          chainId: chainid,
+          chainName: chain.chain_name,
+          rpc: Array.isArray(chain.rpc) ? chain.rpc[0] : chain.rpc,
+          rest: Array.isArray(chain.api) ? chain.api[0] : chain.api,
+          bip44: {
+            coinType: Number(chain.coin_type),
+          },
           coinType: Number(chain.coin_type),
-        },
-        coinType: Number(chain.coin_type),
-        bech32Config: {
-          bech32PrefixAccAddr: chain.addr_prefix,
-          bech32PrefixAccPub: `${chain.addr_prefix}pub`,
-          bech32PrefixValAddr: `${chain.addr_prefix}valoper`,
-          bech32PrefixValPub: `${chain.addr_prefix}valoperpub`,
-          bech32PrefixConsAddr: `${chain.addr_prefix}valcons`,
-          bech32PrefixConsPub: `${chain.addr_prefix}valconspub`,
-        },
-        currencies: [
-          {
+          bech32Config: {
+            bech32PrefixAccAddr: chain.addr_prefix,
+            bech32PrefixAccPub: `${chain.addr_prefix}pub`,
+            bech32PrefixValAddr: `${chain.addr_prefix}valoper`,
+            bech32PrefixValPub: `${chain.addr_prefix}valoperpub`,
+            bech32PrefixConsAddr: `${chain.addr_prefix}valcons`,
+            bech32PrefixConsPub: `${chain.addr_prefix}valconspub`,
+          },
+          currencies: [
+            {
+              coinDenom: chain.assets[0].symbol,
+              coinMinimalDenom: chain.assets[0].base,
+              coinDecimals: Number(chain.assets[0].exponent),
+              coinGeckoId: chain.assets[0].coingecko_id || 'unknown',
+            },
+          ],
+          feeCurrencies: [
+            {
+              coinDenom: chain.assets[0].symbol,
+              coinMinimalDenom: chain.assets[0].base,
+              coinDecimals: Number(chain.assets[0].exponent),
+              coinGeckoId: chain.assets[0].coingecko_id || 'unknown',
+              gasPriceStep,
+            },
+          ],
+          gasPriceStep,
+          stakeCurrency: {
             coinDenom: chain.assets[0].symbol,
             coinMinimalDenom: chain.assets[0].base,
             coinDecimals: Number(chain.assets[0].exponent),
             coinGeckoId: chain.assets[0].coingecko_id || 'unknown',
           },
-        ],
-        feeCurrencies: [
-          {
-            coinDenom: chain.assets[0].symbol,
-            coinMinimalDenom: chain.assets[0].base,
-            coinDecimals: Number(chain.assets[0].exponent),
-            coinGeckoId: chain.assets[0].coingecko_id || 'unknown',
-            gasPriceStep,
-          },
-        ],
-        gasPriceStep,
-        stakeCurrency: {
-          coinDenom: chain.assets[0].symbol,
-          coinMinimalDenom: chain.assets[0].base,
-          coinDecimals: Number(chain.assets[0].exponent),
-          coinGeckoId: chain.assets[0].coingecko_id || 'unknown',
+          features: chain.keplr_features || [],
         },
-        features: chain.keplr_features || [],
-      }, null, '\t')
+        null,
+        '\t',
+      )
     },
     formatPubkey(v) {
-      if (typeof (v) === 'string') {
+      if (typeof v === 'string') {
         return v
       }
       if (v) {
@@ -532,7 +554,9 @@ export default {
         return null
       }
       // const chainId = 'cosmoshub'
-      const chainId = await this.$http.getLatestBlock().then(ret => ret.block.header.chain_id)
+      const chainId = await this.$http
+        .getLatestBlock()
+        .then(ret => ret.block.header.chain_id)
       await window.keplr.enable(chainId)
       const offlineSigner = window.getOfflineSigner(chainId)
       return offlineSigner.getAccounts()
@@ -556,7 +580,9 @@ export default {
           }
           return true
         }
-      } catch (e) { this.debug = e }
+      } catch (e) {
+        this.debug = e
+      }
       return false
     },
     formSubmitted() {
@@ -587,39 +613,44 @@ export default {
     async validationFormDevice() {
       let ok = String(this.name).length > 0
 
-      if (!ok) { // new import, otherwise it's edit mode.
+      if (!ok) {
+        // new import, otherwise it's edit mode.
         switch (this.device) {
           case 'keplr':
             await this.cennectKeplr().then(accounts => {
               if (accounts) {
-              // eslint-disable-next-line prefer-destructuring
+                // eslint-disable-next-line prefer-destructuring
                 this.accounts = accounts[0]
                 ok = true
               }
             })
             break
           case 'metamask':
-            await this.connectMetamask().then(accounts => {
-              if (accounts) {
-              // eslint-disable-next-line prefer-destructuring
-                this.accounts = accounts[0]
-                ok = true
-              }
-            }).catch(e => {
-              this.debug = e
-            })
+            await this.connectMetamask()
+              .then(accounts => {
+                if (accounts) {
+                  // eslint-disable-next-line prefer-destructuring
+                  this.accounts = accounts[0]
+                  ok = true
+                }
+              })
+              .catch(e => {
+                this.debug = e
+              })
             break
           case 'ledger':
           case 'ledger2':
-            await this.connect().then(accounts => {
-              if (accounts) {
-              // eslint-disable-next-line prefer-destructuring
-                this.accounts = accounts[0]
-                ok = true
-              }
-            }).catch(e => {
-              this.debug = e
-            })
+            await this.connect()
+              .then(accounts => {
+                if (accounts) {
+                  // eslint-disable-next-line prefer-destructuring
+                  this.accounts = accounts[0]
+                  ok = true
+                }
+              })
+              .catch(e => {
+                this.debug = e
+              })
             break
           default:
             ok = this.localAddress()
@@ -651,6 +682,6 @@ export default {
 </script>
 
 <style lang="scss">
-  // @import '@core/assets/fonts/feather/iconfont.css';
-  @import '@core/scss/vue/libs/vue-wizard.scss';
+// @import '@core/assets/fonts/feather/iconfont.css';
+@import "@core/scss/vue/libs/vue-wizard.scss";
 </style>

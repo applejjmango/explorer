@@ -20,27 +20,27 @@
     <div class="gov-wrapper flex-wrap my-1">
       <div class="gov">
         <p class="card-text mb-25">
-          {{$t('governanceProposal.proposal_status')}}
+          {{ $t('governanceProposal.proposal_status') }}
         </p>
         <h6 class="mb-0">
           <span v-if="p.status == 1">
-            {{$t('governanceProposal.proposal_status_deposit')}}
+            {{ $t('governanceProposal.proposal_status_deposit') }}
           </span>
           <span v-else-if="p.status == 2">
-            {{$t('governanceProposal.proposal_status_voting')}}
+            {{ $t('governanceProposal.proposal_status_voting') }}
           </span>
           <span v-else-if="p.status == 3">
-            {{$t('governanceProposal.proposal_status_passed')}}
+            {{ $t('governanceProposal.proposal_status_passed') }}
           </span>
           <span v-else-if="p.status == 4">
-            {{$t('governanceProposal.proposal_status_rejected')}}
+            {{ $t('governanceProposal.proposal_status_rejected') }}
           </span>
           <span v-else>{{ p.status }}</span>
         </h6>
       </div>
       <div class="gov">
         <p class="card-text mb-25">
-          {{$t('governanceProposal.proposal_status_start_date')}}
+          {{ $t('governanceProposal.proposal_status_start_date') }}
         </p>
         <h6 class="mb-0">
           {{ formatDate(p.voting_start_time) }}
@@ -48,7 +48,7 @@
       </div>
       <div class="gov">
         <p class="card-text mb-25">
-          {{$t('governanceProposal.proposal_status_end_date')}}
+          {{ $t('governanceProposal.proposal_status_end_date') }}
         </p>
         <h6 class="mb-0">
           {{ formatDate(p.voting_end_time) }}
@@ -56,7 +56,7 @@
       </div>
       <div class="gov">
         <p class="card-text mb-25">
-          {{$t('governanceProposal.proposal_status_deposit')}}
+          {{ $t('governanceProposal.proposal_status_deposit') }}
         </p>
         <h6 class="mb-0">
           {{ formatToken(p.total_deposit) || '-' }}

@@ -2,7 +2,7 @@
   <div>
     <b-card
       v-if="pingVals && pingVals.length > 0"
-      title="❤️ Helping Ping.pub By Staking ❤️"
+      title="❤️ Helping Baryon By Staking ❤️"
       class="overflow-auto"
     >
       <b-table
@@ -23,7 +23,7 @@
           <b-media
             vertical-align="center"
             class="text-truncate"
-            style="max-width:320px;"
+            style="max-width: 320px"
           >
             <template #aside>
               <b-avatar
@@ -43,15 +43,13 @@
               </b-avatar>
             </template>
             <span class="font-weight-bolder d-block text-nowrap">
-              <router-link
-                :to="`./staking/${data.item.operator_address}`"
-              >
+              <router-link :to="`./staking/${data.item.operator_address}`">
                 {{ data.item.description.moniker }}
               </router-link>
             </span>
-            <small
-              class="text-muted"
-            >{{ data.item.description.website || data.item.description.identity }}</small>
+            <small class="text-muted">{{
+              data.item.description.website || data.item.description.identity
+            }}</small>
           </b-media>
         </template>
         <!-- Token -->
@@ -60,18 +58,20 @@
             v-if="data.item.tokens > 0"
             class="d-flex flex-column"
           >
-            <span class="font-weight-bold mb-0">{{ tokenFormatter(data.item.tokens, stakingParameters.bond_denom) }}</span>
-            <span class="font-small-2 text-muted text-nowrap d-none d-lg-block">{{ percent(data.item.tokens/stakingPool) }}%</span>
+            <span class="font-weight-bold mb-0">{{
+              tokenFormatter(data.item.tokens, stakingParameters.bond_denom)
+            }}</span>
+            <span class="font-small-2 text-muted text-nowrap d-none d-lg-block">{{ percent(data.item.tokens / stakingPool) }}%</span>
           </div>
           <span v-else>{{ data.item.delegator_shares }}</span>
         </template>
         <!-- Token -->
         <template #cell(changes)="data">
           <small
-            v-if="data.item.changes>0"
+            v-if="data.item.changes > 0"
             class="text-success"
           >+{{ data.item.changes }}</small>
-          <small v-else-if="data.item.changes===0">-</small>
+          <small v-else-if="data.item.changes === 0">-</small>
           <small
             v-else
             class="text-danger"
@@ -107,7 +107,10 @@
           />
         </b-form-group>
         <b-card-title class="d-none d-sm-block">
-          <span>Validators {{ validators.length }}/{{ stakingParameters.max_validators }} </span>
+          <span>Validators {{ validators.length }}/{{
+            stakingParameters.max_validators
+          }}
+          </span>
         </b-card-title>
       </b-card-header>
       <b-card-body class="pl-0 pr-0 pb-0">
@@ -132,7 +135,7 @@
             <b-media
               vertical-align="center"
               class="text-truncate"
-              style="max-width:320px;"
+              style="max-width: 320px"
             >
               <template #aside>
                 <b-avatar
@@ -152,15 +155,13 @@
                 </b-avatar>
               </template>
               <span class="font-weight-bolder d-block text-nowrap">
-                <router-link
-                  :to="`./staking/${data.item.operator_address}`"
-                >
+                <router-link :to="`./staking/${data.item.operator_address}`">
                   {{ data.item.description.moniker }}
                 </router-link>
               </span>
-              <small
-                class="text-muted"
-              >{{ data.item.description.website || data.item.description.identity }}</small>
+              <small class="text-muted">{{
+                data.item.description.website || data.item.description.identity
+              }}</small>
             </b-media>
           </template>
           <!-- Token -->
@@ -169,18 +170,22 @@
               v-if="data.item.tokens > 0"
               class="d-flex flex-column"
             >
-              <span class="font-weight-bold mb-0">{{ tokenFormatter(data.item.tokens, stakingParameters.bond_denom) }}</span>
-              <span class="font-small-2 text-muted text-nowrap d-none d-lg-block">{{ percent(data.item.tokens/stakingPool) }}%</span>
+              <span class="font-weight-bold mb-0">{{
+                tokenFormatter(data.item.tokens, stakingParameters.bond_denom)
+              }}</span>
+              <span
+                class="font-small-2 text-muted text-nowrap d-none d-lg-block"
+              >{{ percent(data.item.tokens / stakingPool) }}%</span>
             </div>
             <span v-else>{{ data.item.delegator_shares }}</span>
           </template>
           <!-- Token -->
           <template #cell(changes)="data">
             <small
-              v-if="data.item.changes>0"
+              v-if="data.item.changes > 0"
               class="text-success"
             >+{{ data.item.changes }}</small>
-            <small v-else-if="data.item.changes===0">-</small>
+            <small v-else-if="data.item.changes === 0">-</small>
             <small
               v-else
               class="text-danger"
@@ -199,15 +204,13 @@
           </template>
         </b-table>
       </b-card-body>
-      <b-card-footer class="d-none d-md-block d-md-flex justify-content-between">
+      <b-card-footer
+        class="d-none d-md-block d-md-flex justify-content-between"
+      >
         <small>
-          <b-badge variant="danger">
-              &nbsp;
-          </b-badge>
+          <b-badge variant="danger"> &nbsp; </b-badge>
           Top 33%
-          <b-badge variant="warning">
-              &nbsp;
-          </b-badge>
+          <b-badge variant="warning"> &nbsp; </b-badge>
           Top 67% of Voting Power
         </small>
         <download-excel
@@ -236,12 +239,21 @@
 
 <script>
 import {
-  BTable, BMedia, BAvatar, BBadge, BCard, BCardHeader, BCardTitle, VBTooltip, BCardBody, BButton, BFormRadioGroup, BFormGroup,
+  BTable,
+  BMedia,
+  BAvatar,
+  BBadge,
+  BCard,
+  BCardHeader,
+  BCardTitle,
+  VBTooltip,
+  BCardBody,
+  BButton,
+  BFormRadioGroup,
+  BFormGroup,
   BCardFooter,
 } from 'bootstrap-vue'
-import {
-  percent, StakingParameters, formatToken,
-} from '@/libs/utils'
+import { percent, StakingParameters, formatToken } from '@/libs/utils'
 import { keybase } from '@/libs/fetch'
 import OperationModal from '@/views/components/OperationModal/index.vue'
 import DownloadExcel from 'vue-json-excel'
@@ -341,13 +353,20 @@ export default {
   },
   computed: {
     pingVals() {
-      return this.list.filter(x => x.description.identity === '6783E9F948541962')
+      return this.list.filter(
+        x => x.description.identity === '6783E9F948541962',
+      )
     },
     list() {
-      const tab = this.selectedStatus === 'active' ? this.validators : this.inactiveValidators
+      const tab = this.selectedStatus === 'active'
+        ? this.validators
+        : this.inactiveValidators
       return tab.map(x => {
         const xh = x
-        if (Object.keys(this.latestPower).length > 0 && Object.keys(this.previousPower).length > 0) {
+        if (
+          Object.keys(this.latestPower).length > 0
+          && Object.keys(this.previousPower).length > 0
+        ) {
           const latest = this.latestPower[x.consensus_pubkey.key] || 0
           const previous = this.previousPower[x.consensus_pubkey.key] || 0
           xh.changes = latest - previous
@@ -393,9 +412,11 @@ export default {
         // fetch avatar from keybase
         let promise = Promise.resolve()
         identities.forEach(item => {
-          promise = promise.then(() => new Promise(resolve => {
-            this.avatar(item, resolve)
-          }))
+          promise = promise.then(
+            () => new Promise(resolve => {
+              this.avatar(item, resolve)
+            }),
+          )
         })
         this.validators = temp
         this.getPreviousPower(this.validators.length)
@@ -413,18 +434,30 @@ export default {
           this.$set(this.latestPower, x.pub_key.key, Number(x.voting_power))
         })
         for (let offset = 100; offset < length; offset += 100) {
-          this.$http.getValidatorListByHeight('latest', offset).then(latest => {
-            latest.validators.forEach(x => {
-              this.$set(this.latestPower, x.pub_key.key, Number(x.voting_power))
+          this.$http
+            .getValidatorListByHeight('latest', offset)
+            .then(latest => {
+              latest.validators.forEach(x => {
+                this.$set(
+                  this.latestPower,
+                  x.pub_key.key,
+                  Number(x.voting_power),
+                )
+              })
             })
-          })
         }
         for (let offset = 0; offset < length; offset += 100) {
-          this.$http.getValidatorListByHeight(height, offset).then(previous => {
-            previous.validators.forEach(x => {
-              this.$set(this.previousPower, x.pub_key.key, Number(x.voting_power))
+          this.$http
+            .getValidatorListByHeight(height, offset)
+            .then(previous => {
+              previous.validators.forEach(x => {
+                this.$set(
+                  this.previousPower,
+                  x.pub_key.key,
+                  Number(x.voting_power),
+                )
+              })
             })
-          })
         }
       })
     },
@@ -448,9 +481,11 @@ export default {
           // fetch avatar from keybase
           let promise = Promise.resolve()
           identities.forEach(item => {
-            promise = promise.then(() => new Promise(resolve => {
-              this.avatar(item, resolve)
-            }))
+            promise = promise.then(
+              () => new Promise(resolve => {
+                this.avatar(item, resolve)
+              }),
+            )
           })
           this.inactiveValidators = this.inactiveValidators.concat(res)
         })
@@ -487,10 +522,17 @@ export default {
           if (Array.isArray(d.them) && d.them.length > 0) {
             const pic = d.them[0].pictures
             if (pic) {
-              const list = this.selectedStatus === 'active' ? this.validators : this.inactiveValidators
-              const validator = list.find(u => u.description.identity === identity)
+              const list = this.selectedStatus === 'active'
+                ? this.validators
+                : this.inactiveValidators
+              const validator = list.find(
+                u => u.description.identity === identity,
+              )
               this.$set(validator, 'avatar', pic.primary.url)
-              this.$store.commit('cacheAvatar', { identity, url: pic.primary.url })
+              this.$store.commit('cacheAvatar', {
+                identity,
+                url: pic.primary.url,
+              })
             }
           }
         })

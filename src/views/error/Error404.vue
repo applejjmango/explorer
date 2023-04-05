@@ -4,7 +4,7 @@
     <b-link class="brand-logo">
       <vuexy-logo />
       <h2 class="brand-text text-primary ml-1">
-        PING.PUB
+        Baryon
       </h2>
     </b-link>
 
@@ -20,7 +20,7 @@
         <b-button
           variant="primary"
           class="mb-2 btn-sm-block"
-          :to="{path:'/'}"
+          :to="{ path: '/' }"
         >
           Back to home
         </b-button>
@@ -34,7 +34,7 @@
       </div>
     </div>
   </div>
-<!-- / Error page-->
+  <!-- / Error page-->
 </template>
 
 <script>
@@ -69,5 +69,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@core/scss/vue/pages/page-misc.scss';
+@import "@core/scss/vue/pages/page-misc.scss";
 </style>
