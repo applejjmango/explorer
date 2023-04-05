@@ -2,7 +2,9 @@
   <!-- Error page-->
   <div class="misc-wrapper">
     <b-link class="brand-logo">
-      <vuexy-logo />
+      <div>
+        <img src="/logo.png" alt="Logo" width="80" />
+      </div>
       <h2 class="brand-text text-primary ml-1">
         Baryon
       </h2>
@@ -45,7 +47,6 @@ import store from '@/store/index'
 
 export default {
   components: {
-    VuexyLogo,
     BLink,
     BButton,
     BImg,

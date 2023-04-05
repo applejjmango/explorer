@@ -3,17 +3,19 @@
     <full-header />
     <b-link>
       <div class="d-flex justify-content-center align-items-center p-1">
-        <vuexy-logo />
+      <div>
+        <img src="/logo.png" alt="Logo" width="80" />
+      </div>
         <h1
-          class="text-primary display-4 font-weight-bolder d-none d-md-block ml-1"
+          class="text-primary display-3 font-weight-bolder d-none d-md-block ml-1"
         >
-          Ping Dashboard<small class="flow-left">Beta</small>
+          Baryon Dashboard<small class="flow-left">Beta</small>
         </h1>
       </div>
     </b-link>
 
     <p class="mb-1">
-      Ping Dashboard is not just an explorer but also a wallet and more ... 🛠
+      Baryon Dashboard is not just an explorer but also a wallet and more ... 🛠
     </p>
     <h2 class="mb-3">
       Cosmos Ecosystem Blockchains 🚀

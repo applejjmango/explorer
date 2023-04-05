@@ -458,7 +458,7 @@ export function formatTokenAmount(tokenAmount, decimals = 2, tokenDenom = 'uatom
 }
 
 export function isTestnet() {
-  return (window.location.hostname.startsWith('testnet')
+  return (window.location.hostname.startsWith('testnet-explorer')
     || window.location.search.indexOf('testnet') > -1)
 }
 

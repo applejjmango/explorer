@@ -24,20 +24,20 @@ function processMenu() {
   }
   chainMenus.push({ header: 'sponsors' })
   chainMenus.push({
-    title: 'Becole',
-    href: 'https://becole.com',
-    logo: 'https://becole.com/static/logo/logo_becole.png',
+    title: 'Persistence',
+    href: 'https://persistence.one/',
+    logo: 'https://blog.persistence.one/wp-content/uploads/2021/10/cropped-256_Dark-3-80x80.png',
   })
   chainMenus.push({
-    title: 'Osmosis',
-    href: 'https://app.osmosis.zone',
-    logo: 'https://ping.pub/logos/osmosis.jpg',
+    title: 'Umee',
+    href: 'https://app.umee.cc/',
+    logo: 'https://pbs.twimg.com/profile_images/1609579320577785857/hhygMdg9_400x400.jpg',
   })
   chainMenus.push({ header: 'LINKS' })
   if (isTestnet()) {
     chainMenus.push({
       title: 'Mainnet Explorer',
-      href: 'https://ping.pub',
+      href: 'https://explorer.baryon.guru',
       icon: 'ChromeIcon',
     })
   } else {
