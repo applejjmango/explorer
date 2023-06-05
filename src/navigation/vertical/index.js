@@ -37,19 +37,19 @@ function processMenu() {
   if (isTestnet()) {
     chainMenus.push({
       title: 'Mainnet Explorer',
-      href: 'https://explorer.baryon.guru',
+      href: 'https://explorer.baryon.dev',
       icon: 'ChromeIcon',
     })
   } else {
     chainMenus.push({
       title: 'Testnet Explorer',
-      href: 'http://testnet.ping.pub', // http://testnet.baryon.guru
+      href: 'https://testnet-explorer.baryon.dev/', // http://testnet.baryon.guru
       icon: 'LifeBuoyIcon',
     })
   }
   chainMenus.push({
     title: 'Twitter',
-    href: 'https://twitter.com/baryon_capital',
+    href: 'https://twitter.com/baryon_guru',
     icon: 'TwitterIcon',
   })
   chainMenus.push({
