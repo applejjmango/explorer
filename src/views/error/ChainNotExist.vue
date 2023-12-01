@@ -3,7 +3,11 @@
   <div class="misc-wrapper">
     <b-link class="brand-logo">
       <div>
-        <img src="/logo.png" alt="Logo" width="80" />
+        <img
+          src="/logo.png"
+          alt="Logo"
+          width="80"
+        >
       </div>
       <h2 class="brand-text text-primary ml-1">
         Baryon

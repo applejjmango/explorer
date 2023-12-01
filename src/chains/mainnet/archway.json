@@ -1,0 +1,23 @@
+{
+  "chain_name": "archway",
+  "api": ["https://archway.api.silknodes.io"],
+  "rpc": ["https://archway.rpc.silknodes.io"],
+  "sdk_version": "0.45.9",
+  "coin_type": 118,
+  "addr_prefix": "archway",
+  "logo": "/logos/Archway_Round.png",
+  "assets": [
+    {
+      "base": "aacch",
+      "symbol": "ARCH",
+      "exponent": 6,
+      "coingecko_id": "archway",
+      "logo": "/logos/Archway_Round.png",
+      "gasPriceStep": {
+        "average": 0.025,
+        "high": 0.03,
+        "low": 0.01
+      }
+    }
+  ]
+}

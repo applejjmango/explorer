@@ -3,9 +3,13 @@
     <full-header />
     <b-link>
       <div class="d-flex justify-content-center align-items-center p-1">
-      <div>
-        <img src="/logo.png" alt="Logo" width="80" />
-      </div>
+        <div>
+          <img
+            src="/logo.png"
+            alt="Logo"
+            width="80"
+          >
+        </div>
         <h1
           class="text-primary display-3 font-weight-bolder d-none d-md-block ml-1"
         >
