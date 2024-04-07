@@ -1,6 +1,6 @@
 {
     "chain_name": "test-core-1",
-    "api":"https://rest.testnet.persistence.one",
+    "api":"https://rest.testnet2.persistence.one",
     "sdk_version": "0.45.6",
     "addr_prefix": "persistence",
     "min_tx_fee": "3000",
